@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
@@ -24,8 +24,9 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 import alien4cloud.tosca.parser.mapping.DefaultDeferredParser;
 
 @Component
-@Slf4j
 public class OuputsParser extends DefaultDeferredParser<Void> {
+
+    private static final Logger log = LoggerFactory.getLogger(OuputsParser.class);
 
     @Override
     public Void parse(Node node, ParsingContextExecution context) {

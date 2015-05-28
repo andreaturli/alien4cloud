@@ -10,9 +10,6 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-
-@Getter
 public class DefinitionVisitor extends SimpleFileVisitor<Path> {
     private PathMatcher yamlPathMatcher;
     private PathMatcher ymlPathMatcher;
@@ -29,5 +26,17 @@ public class DefinitionVisitor extends SimpleFileVisitor<Path> {
             definitionFiles.add(file);
         }
         return super.visitFile(file, attrs);
+    }
+
+    public PathMatcher getYamlPathMatcher() {
+        return yamlPathMatcher;
+    }
+
+    public PathMatcher getYmlPathMatcher() {
+        return ymlPathMatcher;
+    }
+
+    public List<Path> getDefinitionFiles() {
+        return definitionFiles;
     }
 }

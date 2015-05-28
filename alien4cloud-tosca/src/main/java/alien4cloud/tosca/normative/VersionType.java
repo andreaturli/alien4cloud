@@ -1,8 +1,8 @@
 package alien4cloud.tosca.normative;
 
+import alien4cloud.utils.VersionUtil;
 import alien4cloud.utils.version.InvalidVersionException;
 import alien4cloud.utils.version.Version;
-import alien4cloud.utils.version.VersionUtil;
 
 /**
  * @author Minh Khang VU

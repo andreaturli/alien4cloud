@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.nodes.MappingNode;
@@ -16,6 +16,8 @@ import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.SequenceNode;
+
+import com.google.common.collect.Maps;
 
 import alien4cloud.tosca.parser.IChecker;
 import alien4cloud.tosca.parser.INodeParser;
@@ -33,14 +35,14 @@ import alien4cloud.tosca.parser.impl.base.ScalarParser;
 import alien4cloud.tosca.parser.impl.base.TypeNodeParser;
 import alien4cloud.tosca.parser.mapping.DefaultParser;
 
-import com.google.common.collect.Maps;
-
 /**
  * Load type mapping definition from yaml and add it to the type mapping registry.
  */
-@Slf4j
 @Component
 public class MappingGenerator extends DefaultParser<Map<String, INodeParser>> {
+
+    private static final Logger log = LoggerFactory.getLogger(MappingGenerator.class);
+
     @Resource
     private ApplicationContext applicationContext;
 

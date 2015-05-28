@@ -3,17 +3,21 @@ package alien4cloud.tosca.parser.mapping;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.PropertyNamingStrategyBase;
+
 import alien4cloud.tosca.parser.INodeParser;
 import alien4cloud.tosca.parser.MappingTarget;
 import alien4cloud.tosca.parser.impl.base.ScalarParser;
 import alien4cloud.tosca.parser.impl.base.TypeNodeParser;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy.PropertyNamingStrategyBase;
-
-@Slf4j
 public abstract class AbstractMapper<T> {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractMapper.class);
+
     @Resource
     private ScalarParser scalarParser;
 
@@ -25,7 +29,7 @@ public abstract class AbstractMapper<T> {
 
     /**
      * Get the instance of the mapper.
-     * 
+     *
      * @return The mapper instance.
      */
     public TypeNodeParser<T> getParser() {
@@ -40,7 +44,7 @@ public abstract class AbstractMapper<T> {
 
     /**
      * Return the injected scalar parser.
-     * 
+     *
      * @return The scalar parser.
      */
     public ScalarParser getScalarParser() {
@@ -49,7 +53,7 @@ public abstract class AbstractMapper<T> {
 
     /**
      * Map a field to be parsed as a scalar and mapped to a tosca field that use the same name based on LOWER_CASE_WITH_UNDERSCORES rather than CAMEL_CASE.
-     * 
+     *
      * @param fieldName The name of the field.
      */
     public void quickMap(String fieldName) {
@@ -65,7 +69,7 @@ public abstract class AbstractMapper<T> {
     /**
      * Map a field to be parsed with the given parser and mapped to a tosca field that use the same name based on LOWER_CASE_WITH_UNDERSCORES rather than
      * CAMEL_CASE.
-     * 
+     *
      * @param parser The parser to use to parse the field.
      * @param fieldName The name of the field to parse.
      */

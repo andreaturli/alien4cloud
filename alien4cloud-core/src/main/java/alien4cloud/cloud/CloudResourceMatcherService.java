@@ -42,7 +42,7 @@ import alien4cloud.tosca.normative.SizeUnit;
 import alien4cloud.tosca.normative.ToscaType;
 import alien4cloud.utils.MappingUtil;
 import alien4cloud.utils.version.Version;
-import alien4cloud.utils.version.VersionUtil;
+import alien4cloud.utils.VersionUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;

@@ -1,15 +1,5 @@
 package alien4cloud.model.topology;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
 public class ScalingPolicy {
 
     private int minInstances;
@@ -18,4 +8,36 @@ public class ScalingPolicy {
 
     private int initialInstances;
 
+    public ScalingPolicy() {
+    }
+
+    public ScalingPolicy(int minInstances, int maxInstances, int initialInstances) {
+        this.minInstances = minInstances;
+        this.maxInstances = maxInstances;
+        this.initialInstances = initialInstances;
+    }
+
+    public int getMinInstances() {
+        return minInstances;
+    }
+
+    public void setMinInstances(int minInstances) {
+        this.minInstances = minInstances;
+    }
+
+    public int getMaxInstances() {
+        return maxInstances;
+    }
+
+    public void setMaxInstances(int maxInstances) {
+        this.maxInstances = maxInstances;
+    }
+
+    public int getInitialInstances() {
+        return initialInstances;
+    }
+
+    public void setInitialInstances(int initialInstances) {
+        this.initialInstances = initialInstances;
+    }
 }

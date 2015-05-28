@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import alien4cloud.utils.version.InvalidVersionException;
-import alien4cloud.utils.version.VersionUtil;
+import alien4cloud.utils.VersionUtil;
 
 public class VersionUtilTest {
 

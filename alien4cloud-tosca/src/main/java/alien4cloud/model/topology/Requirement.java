@@ -2,21 +2,16 @@ package alien4cloud.model.topology;
 
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import alien4cloud.json.deserializer.PropertyValueDeserializer;
 import alien4cloud.model.components.AbstractPropertyValue;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 /**
  * Define the requirement for the node. Must match the Node type's definitions.
- * 
+ *
  * @author luc boutier
  */
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
 public class Requirement {
     /**
      * The QName value of this attribute refers to the Requirement Type definition of the Requirement. This Requirement Type denotes the semantics and well as
@@ -29,4 +24,20 @@ public class Requirement {
      */
     @JsonDeserialize(contentUsing = PropertyValueDeserializer.class)
     private Map<String, AbstractPropertyValue> properties;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Map<String, AbstractPropertyValue> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, AbstractPropertyValue> properties) {
+        this.properties = properties;
+    }
 }

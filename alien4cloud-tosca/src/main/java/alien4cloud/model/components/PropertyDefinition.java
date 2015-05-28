@@ -6,11 +6,10 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import alien4cloud.json.deserializer.PropertyConstraintDeserializer;
 import alien4cloud.model.components.constraints.EqualConstraint;
 import alien4cloud.model.components.constraints.GreaterOrEqualConstraint;
@@ -34,10 +33,6 @@ import alien4cloud.ui.form.annotation.FormProperties;
 import alien4cloud.ui.form.annotation.FormType;
 import alien4cloud.ui.form.annotation.FormValidValues;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 /**
  *
  * Only parameter exposed as property definitions can be used for "custom" operations.
@@ -46,11 +41,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  *
  */
 
-@Getter
-@Setter
-@NoArgsConstructor
-@EqualsAndHashCode(of = { "type", "required", "description", "defaultValue", "constraints" })
-@SuppressWarnings("PMD.UnusedPrivateField")
 @ToscaPropertyDefaultValueType
 @ToscaPropertyConstraint
 @ToscaPropertyDefaultValueConstraints(groups = { ToscaPropertyPostValidationGroup.class })
@@ -66,8 +56,6 @@ public class PropertyDefinition implements IValue {
     private boolean required = true;
 
     @JsonProperty("default")
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
     private String defaultValue;
 
     private String description;
@@ -91,6 +79,8 @@ public class PropertyDefinition implements IValue {
     private Schema entrySchema;
 
     private boolean isPassword;
+
+    public PropertyDefinition() {}
 
     public String getDefault() {
         return this.defaultValue;
@@ -138,4 +128,81 @@ public class PropertyDefinition implements IValue {
         }
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<PropertyConstraint> getConstraints() {
+        return constraints;
+    }
+
+    public void setConstraints(List<PropertyConstraint> constraints) {
+        this.constraints = constraints;
+    }
+
+    public Schema getEntrySchema() {
+        return entrySchema;
+    }
+
+    public void setEntrySchema(Schema entrySchema) {
+        this.entrySchema = entrySchema;
+    }
+
+    public boolean isPassword() {
+        return isPassword;
+    }
+
+    public void setPassword(boolean isPassword) {
+        this.isPassword = isPassword;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PropertyDefinition)) return false;
+
+        PropertyDefinition that = (PropertyDefinition) o;
+
+        if (isPassword != that.isPassword) return false;
+        if (required != that.required) return false;
+        if (constraints != null ? !constraints.equals(that.constraints) : that.constraints != null) return false;
+        if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (entrySchema != null ? !entrySchema.equals(that.entrySchema) : that.entrySchema != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + (required ? 1 : 0);
+        result = 31 * result + (defaultValue != null ? defaultValue.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (constraints != null ? constraints.hashCode() : 0);
+        result = 31 * result + (entrySchema != null ? entrySchema.hashCode() : 0);
+        result = 31 * result + (isPassword ? 1 : 0);
+        return result;
+    }
 }

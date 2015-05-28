@@ -3,9 +3,9 @@ package alien4cloud.model.topology;
 import java.util.Map;
 import java.util.Set;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import alien4cloud.model.components.AbstractPropertyValue;
 import alien4cloud.model.components.DeploymentArtifact;
 import alien4cloud.utils.jackson.ConditionalAttributes;
@@ -13,18 +13,11 @@ import alien4cloud.utils.jackson.ConditionalOnAttribute;
 import alien4cloud.utils.jackson.JSonMapEntryArrayDeSerializer;
 import alien4cloud.utils.jackson.JSonMapEntryArraySerializer;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 /**
  * Specifies a kind of a component making up the cloud application.
  *
  * @author luc boutier
  */
-@Getter
-@Setter
-@NoArgsConstructor
-@SuppressWarnings("PMD.UnusedPrivateField")
 public class NodeTemplate extends AbstractTemplate {
     /**
      * Id in the map is name.replaceAll(" ", "").toLowerCase();
@@ -86,5 +79,55 @@ public class NodeTemplate extends AbstractTemplate {
             return false;
         }
         return true;
+    }
+
+    public NodeTemplate() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
+    }
+
+    public Map<String, Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(Map<String, Requirement> requirements) {
+        this.requirements = requirements;
+    }
+
+    public Map<String, RelationshipTemplate> getRelationships() {
+        return relationships;
+    }
+
+    public void setRelationships(Map<String, RelationshipTemplate> relationships) {
+        this.relationships = relationships;
+    }
+
+    public Map<String, Capability> getCapabilities() {
+        return capabilities;
+    }
+
+    public void setCapabilities(Map<String, Capability> capabilities) {
+        this.capabilities = capabilities;
+    }
+
+    public Set<String> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<String> groups) {
+        this.groups = groups;
     }
 }

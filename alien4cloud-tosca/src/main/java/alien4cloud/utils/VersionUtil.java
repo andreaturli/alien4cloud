@@ -1,4 +1,4 @@
-package alien4cloud.utils.version;
+package alien4cloud.utils;
 
 import java.util.regex.Pattern;
 

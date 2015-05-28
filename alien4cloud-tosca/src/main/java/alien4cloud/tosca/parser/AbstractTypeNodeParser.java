@@ -2,10 +2,9 @@ package alien4cloud.tosca.parser;
 
 import java.util.Map.Entry;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-
 import org.apache.commons.collections4.keyvalue.DefaultMapEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.NotWritablePropertyException;
@@ -16,9 +15,10 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 /**
  * Abstract class to work with Type Node Parsing.
  */
-@Slf4j
-@Getter
 public abstract class AbstractTypeNodeParser {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractTypeNodeParser.class);
+
     private final String toscaType;
 
     public AbstractTypeNodeParser(String toscaType) {
@@ -91,4 +91,7 @@ public abstract class AbstractTypeNodeParser {
         return findWrapperPropertyByPath(root, base, nextPath);
     }
 
+    public String getToscaType() {
+        return toscaType;
+    }
 }

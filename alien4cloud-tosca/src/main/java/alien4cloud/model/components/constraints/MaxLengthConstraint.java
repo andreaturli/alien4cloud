@@ -2,17 +2,8 @@ package alien4cloud.model.components.constraints;
 
 import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false, of = { "maxLength" })
-@SuppressWarnings({ "PMD.UnusedPrivateField" })
 public class MaxLengthConstraint extends AbstractStringPropertyConstraint {
     @NotNull
     private Integer maxLength;
@@ -26,5 +17,33 @@ public class MaxLengthConstraint extends AbstractStringPropertyConstraint {
         if (propertyValue.length() > maxLength) {
             throw new ConstraintViolationException("The length of the value is greater than [" + maxLength + "]");
         }
+    }
+
+    public MaxLengthConstraint() {
+    }
+
+    public Integer getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(Integer maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MaxLengthConstraint)) return false;
+
+        MaxLengthConstraint that = (MaxLengthConstraint) o;
+
+        if (maxLength != null ? !maxLength.equals(that.maxLength) : that.maxLength != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return maxLength != null ? maxLength.hashCode() : 0;
     }
 }

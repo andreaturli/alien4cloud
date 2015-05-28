@@ -5,32 +5,24 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanWrapper;
 
-@Slf4j
 public class ParsingContextExecution {
 
-    @Getter
-    @Setter
+    private static final Logger log = LoggerFactory.getLogger(ParsingContextExecution.class);
+
     private BeanWrapper root;
 
     private final Queue<DefferedParsingValueExecutor> deferredParsers = new PriorityQueue<DefferedParsingValueExecutor>();
 
-    @Getter
     private final ParsingContext parsingContext;
 
     /** Map of parsers by type */
-    @Getter
-    @Setter
     private Map<String, INodeParser> registry;
 
     /** Eventually, the current node parent object. */
-    @Getter
-    @Setter
     private Object parent;
 
     public ParsingContextExecution(String fileName) {
@@ -66,4 +58,35 @@ public class ParsingContextExecution {
         }
     }
 
+    public static Logger getLog() {
+        return log;
+    }
+
+    public BeanWrapper getRoot() {
+        return root;
+    }
+
+    public void setRoot(BeanWrapper root) {
+        this.root = root;
+    }
+
+    public ParsingContext getParsingContext() {
+        return parsingContext;
+    }
+
+    public Map<String, INodeParser> getRegistry() {
+        return registry;
+    }
+
+    public void setRegistry(Map<String, INodeParser> registry) {
+        this.registry = registry;
+    }
+
+    public Object getParent() {
+        return parent;
+    }
+
+    public void setParent(Object parent) {
+        this.parent = parent;
+    }
 }

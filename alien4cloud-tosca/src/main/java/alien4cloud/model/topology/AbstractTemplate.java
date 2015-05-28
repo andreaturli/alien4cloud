@@ -2,30 +2,22 @@ package alien4cloud.model.topology;
 
 import java.util.Map;
 
-import alien4cloud.model.components.DeploymentArtifact;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import alien4cloud.json.deserializer.PropertyValueDeserializer;
 import alien4cloud.model.components.AbstractPropertyValue;
+import alien4cloud.model.components.DeploymentArtifact;
 import alien4cloud.utils.jackson.ConditionalAttributes;
 import alien4cloud.utils.jackson.ConditionalOnAttribute;
 import alien4cloud.utils.jackson.JSonMapEntryArrayDeSerializer;
 import alien4cloud.utils.jackson.JSonMapEntryArraySerializer;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Abstract template is parent of {@link NodeTemplate} and {@link RelationshipTemplate}.
  *
  * @author luc boutier
  */
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @SuppressWarnings("PMD.UnusedPrivateField")
 public abstract class AbstractTemplate {
 
@@ -50,4 +42,37 @@ public abstract class AbstractTemplate {
      * The deployment artifacts
      */
     private Map<String, DeploymentArtifact> artifacts;
+
+    public AbstractTemplate() {
+    }
+
+    public AbstractTemplate(String type, Map<String, AbstractPropertyValue> properties, Map<String, DeploymentArtifact> artifacts) {
+        this.type = type;
+        this.properties = properties;
+        this.artifacts = artifacts;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Map<String, AbstractPropertyValue> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, AbstractPropertyValue> properties) {
+        this.properties = properties;
+    }
+
+    public Map<String, DeploymentArtifact> getArtifacts() {
+        return artifacts;
+    }
+
+    public void setArtifacts(Map<String, DeploymentArtifact> artifacts) {
+        this.artifacts = artifacts;
+    }
 }

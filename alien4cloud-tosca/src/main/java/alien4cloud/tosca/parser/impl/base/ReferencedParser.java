@@ -1,8 +1,7 @@
 package alien4cloud.tosca.parser.impl.base;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.nodes.Node;
 
 import alien4cloud.tosca.parser.INodeParser;
@@ -13,10 +12,15 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 /**
  * Parser implementation that delegates parsing to a parser referenced in the parser registry based on the type key.
  */
-@Slf4j
-@AllArgsConstructor
 public class ReferencedParser<T> implements INodeParser<T> {
+
+    private static final Logger log = LoggerFactory.getLogger(ReferencedParser.class);
+
     private String typeName;
+
+    public ReferencedParser(String typeName) {
+        this.typeName = typeName;
+    }
 
     @Override
     public T parse(Node node, ParsingContextExecution context) {

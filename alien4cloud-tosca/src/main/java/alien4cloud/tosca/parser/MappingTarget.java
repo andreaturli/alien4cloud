@@ -1,8 +1,5 @@
 package alien4cloud.tosca.parser;
 
-import lombok.Getter;
-
-@Getter
 public class MappingTarget {
     private boolean isRootPath;
     private String path;
@@ -16,5 +13,17 @@ public class MappingTarget {
             this.path = path;
         }
         this.parser = parser;
+    }
+
+    public boolean isRootPath() {
+        return isRootPath;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public INodeParser<?> getParser() {
+        return parser;
     }
 }

@@ -1,7 +1,5 @@
 package alien4cloud.tosca.parser.impl.base;
 
-import lombok.AllArgsConstructor;
-
 import org.yaml.snakeyaml.nodes.Node;
 
 import alien4cloud.tosca.parser.INodeParser;
@@ -12,7 +10,6 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 /**
  * Very simple scalar parser that just returns the value as string.
  */
-@AllArgsConstructor
 public class InnerParser implements INodeParser<Object> {
 
     private String type;
@@ -20,6 +17,12 @@ public class InnerParser implements INodeParser<Object> {
     private boolean deferred;
 
     private int deferredOrder;
+
+    public InnerParser(String type, boolean deferred, int deferredOrder) {
+        this.type = type;
+        this.deferred = deferred;
+        this.deferredOrder = deferredOrder;
+    }
 
     @Override
     public boolean isDeferred(ParsingContextExecution context) {

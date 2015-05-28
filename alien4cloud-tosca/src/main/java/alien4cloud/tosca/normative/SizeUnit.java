@@ -1,7 +1,5 @@
 package alien4cloud.tosca.normative;
 
-import lombok.Getter;
-
 /**
  * @author Minh Khang VU
  */
@@ -20,10 +18,14 @@ public enum SizeUnit implements Unit {
     /**
      * Multiplier if convert to base unit which is byte (B)
      */
-    @Getter
     private double multiplier;
 
     SizeUnit(double multiplier) {
         this.multiplier = multiplier;
+    }
+
+    @Override
+    public double getMultiplier() {
+        return multiplier;
     }
 }

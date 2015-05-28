@@ -5,14 +5,14 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import lombok.AllArgsConstructor;
-
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
+
+import com.google.common.collect.Maps;
 
 import alien4cloud.model.components.PropertyConstraint;
 import alien4cloud.model.components.constraints.EqualConstraint;
@@ -37,8 +37,6 @@ import alien4cloud.tosca.parser.ParsingTechnicalException;
 import alien4cloud.tosca.parser.impl.ErrorCode;
 import alien4cloud.tosca.parser.impl.base.ListParser;
 import alien4cloud.tosca.parser.impl.base.ScalarParser;
-
-import com.google.common.collect.Maps;
 
 /**
  * Parse a constraint based on the specified operator
@@ -118,10 +116,15 @@ public class ConstraintParser extends AbstractTypeNodeParser implements INodePar
         return constraint;
     }
 
-    @AllArgsConstructor
     private class ConstraintParsingInfo {
         private Class<? extends PropertyConstraint> constraintClass;
         private String expressionPropertyName;
         private INodeParser<?> expressionParser;
+
+        public ConstraintParsingInfo(Class<? extends PropertyConstraint> constraintClass, String expressionPropertyName, INodeParser<?> expressionParser) {
+            this.constraintClass = constraintClass;
+            this.expressionPropertyName = expressionPropertyName;
+            this.expressionParser = expressionParser;
+        }
     }
 }

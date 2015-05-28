@@ -2,7 +2,6 @@ package alien4cloud.tosca.properties.constraints.exception;
 
 import alien4cloud.exception.FunctionalException;
 import alien4cloud.tosca.properties.constraints.ConstraintUtil;
-import lombok.Getter;
 
 /**
  * All functional error related to constraint processing must go here
@@ -14,7 +13,6 @@ public class ConstraintFunctionalException extends FunctionalException {
 
     private static final long serialVersionUID = 1L;
 
-    @Getter
     protected ConstraintUtil.ConstraintInformation constraintInformation;
 
     public ConstraintFunctionalException(String message, Throwable cause) {
@@ -30,4 +28,7 @@ public class ConstraintFunctionalException extends FunctionalException {
         this.constraintInformation = constraintInformation;
     }
 
+    public ConstraintUtil.ConstraintInformation getConstraintInformation() {
+        return constraintInformation;
+    }
 }

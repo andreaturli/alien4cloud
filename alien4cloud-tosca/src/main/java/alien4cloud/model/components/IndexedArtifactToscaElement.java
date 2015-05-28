@@ -6,20 +6,14 @@ import static alien4cloud.dao.model.FetchContext.TAG_SUGGESTION;
 
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.elasticsearch.annotation.query.FetchContext;
-
-import alien4cloud.json.deserializer.AbstractAttributeDeserializer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
+import alien4cloud.json.deserializer.AbstractAttributeDeserializer;
+
 @JsonInclude(Include.NON_NULL)
 public class IndexedArtifactToscaElement extends IndexedInheritableToscaElement {
     @FetchContext(contexts = { COMPONENT_SUMMARY, QUICK_SEARCH, TAG_SUGGESTION }, include = { false, false, false })
@@ -31,4 +25,28 @@ public class IndexedArtifactToscaElement extends IndexedInheritableToscaElement 
 
     @FetchContext(contexts = { COMPONENT_SUMMARY, QUICK_SEARCH, TAG_SUGGESTION }, include = { false, false, false })
     private Map<String, Interface> interfaces;
+
+    public Map<String, DeploymentArtifact> getArtifacts() {
+        return artifacts;
+    }
+
+    public void setArtifacts(Map<String, DeploymentArtifact> artifacts) {
+        this.artifacts = artifacts;
+    }
+
+    public Map<String, IValue> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, IValue> attributes) {
+        this.attributes = attributes;
+    }
+
+    public Map<String, Interface> getInterfaces() {
+        return interfaces;
+    }
+
+    public void setInterfaces(Map<String, Interface> interfaces) {
+        this.interfaces = interfaces;
+    }
 }

@@ -2,8 +2,6 @@ package alien4cloud.tosca.parser.impl.base;
 
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.yaml.snakeyaml.nodes.MappingNode;
@@ -11,14 +9,13 @@ import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 
+import com.google.common.collect.Maps;
+
 import alien4cloud.tosca.parser.INodeParser;
 import alien4cloud.tosca.parser.ParserUtils;
 import alien4cloud.tosca.parser.ParsingContextExecution;
 import alien4cloud.tosca.parser.mapping.DefaultParser;
 
-import com.google.common.collect.Maps;
-
-@AllArgsConstructor
 public class MapParser<T> extends DefaultParser<Map<String, T>> {
     private INodeParser<T> valueParser;
     /** The tosca type of the map. */
@@ -28,6 +25,12 @@ public class MapParser<T> extends DefaultParser<Map<String, T>> {
 
     public MapParser(INodeParser<T> valueParser, String toscaType) {
         this(valueParser, toscaType, null);
+    }
+
+    public MapParser(INodeParser<T> valueParser, String toscaType, String keyPath) {
+        this.valueParser = valueParser;
+        this.toscaType = toscaType;
+        this.keyPath = keyPath;
     }
 
     @Override

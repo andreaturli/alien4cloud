@@ -78,7 +78,7 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 import alien4cloud.utils.FileUploadUtil;
 import alien4cloud.utils.FileUtil;
 import alien4cloud.utils.YamlParserUtil;
-import alien4cloud.utils.version.VersionUtil;
+import alien4cloud.utils.VersionUtil;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

@@ -35,7 +35,7 @@ import alien4cloud.model.components.IndexedModelUtils;
 import alien4cloud.model.components.IndexedToscaElement;
 import alien4cloud.tosca.ArchiveImageLoader;
 import alien4cloud.utils.MapUtil;
-import alien4cloud.utils.version.VersionUtil;
+import alien4cloud.utils.VersionUtil;
 
 @Component
 public class CSARRepositoryIndexerService implements ICSARRepositoryIndexerService {

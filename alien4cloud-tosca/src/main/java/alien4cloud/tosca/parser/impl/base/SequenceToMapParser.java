@@ -2,8 +2,6 @@ package alien4cloud.tosca.parser.impl.base;
 
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-
 import org.elasticsearch.common.collect.Maps;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
@@ -19,11 +17,15 @@ import alien4cloud.tosca.parser.ParsingContextExecution;
  *
  * @param <T> The type of the values of the map.
  */
-@AllArgsConstructor
 public class SequenceToMapParser<T> implements INodeParser<Map<String, T>> {
     private INodeParser<T> valueParser;
     /** The tosca type of the map. */
     private String toscaType;
+
+    public SequenceToMapParser(INodeParser<T> valueParser, String toscaType) {
+        this.valueParser = valueParser;
+        this.toscaType = toscaType;
+    }
 
     @Override
     public Map<String, T> parse(Node node, ParsingContextExecution context) {

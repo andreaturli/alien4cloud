@@ -1,8 +1,5 @@
 package alien4cloud.tosca.parser;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.yaml.snakeyaml.error.Mark;
 import org.yaml.snakeyaml.error.MarkedYAMLException;
 
@@ -11,8 +8,6 @@ import alien4cloud.tosca.parser.impl.ErrorCode;
 /**
  * Contains error informations relative to Yaml parsing.
  */
-@Getter
-@Setter
 public class ParsingError {
     private ParsingErrorLevel errorLevel;
     private ErrorCode errorCode;
@@ -53,6 +48,62 @@ public class ParsingError {
         this.problem = cause.getProblem();
         this.endMark = cause.getContextMark() == null ? null : new SimpleMark(cause.getProblemMark());
         this.note = null;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public ParsingErrorLevel getErrorLevel() {
+        return errorLevel;
+    }
+
+    public void setErrorLevel(ParsingErrorLevel errorLevel) {
+        this.errorLevel = errorLevel;
+    }
+
+    public ErrorCode getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(ErrorCode errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public SimpleMark getStartMark() {
+        return startMark;
+    }
+
+    public void setStartMark(SimpleMark startMark) {
+        this.startMark = startMark;
+    }
+
+    public String getProblem() {
+        return problem;
+    }
+
+    public void setProblem(String problem) {
+        this.problem = problem;
+    }
+
+    public SimpleMark getEndMark() {
+        return endMark;
+    }
+
+    public void setEndMark(SimpleMark endMark) {
+        this.endMark = endMark;
     }
 
     @Override

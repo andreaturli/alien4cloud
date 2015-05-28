@@ -2,20 +2,13 @@ package alien4cloud.model.components.constraints;
 
 import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import alien4cloud.tosca.normative.IPropertyType;
 import alien4cloud.tosca.properties.constraints.ConstraintUtil;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintValueDoNotMatchPropertyTypeException;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Getter
-@Setter
-@SuppressWarnings({ "PMD.UnusedPrivateField" })
-@EqualsAndHashCode(callSuper = false, of = { "equal" })
 public class EqualConstraint extends AbstractPropertyConstraint {
     @NotNull
     private String equal;
@@ -44,5 +37,41 @@ public class EqualConstraint extends AbstractPropertyConstraint {
     private void fail(Object propertyValue) throws ConstraintViolationException {
         throw new ConstraintViolationException("Equal constraint violation, the reference is <" + equal + "> but the value to compare is <" + propertyValue
                 + ">");
+    }
+
+    public String getEqual() {
+        return equal;
+    }
+
+    public void setEqual(String equal) {
+        this.equal = equal;
+    }
+
+    public Object getTyped() {
+        return typed;
+    }
+
+    public void setTyped(Object typed) {
+        this.typed = typed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EqualConstraint)) return false;
+
+        EqualConstraint that = (EqualConstraint) o;
+
+        if (equal != null ? !equal.equals(that.equal) : that.equal != null) return false;
+        if (typed != null ? !typed.equals(that.typed) : that.typed != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = equal != null ? equal.hashCode() : 0;
+        result = 31 * result + (typed != null ? typed.hashCode() : 0);
+        return result;
     }
 }

@@ -1,7 +1,5 @@
 package alien4cloud.tosca.normative;
 
-import lombok.Getter;
-
 /**
  * @author Minh Khang VU
  */
@@ -12,10 +10,14 @@ public enum TimeUnit implements Unit {
     /**
      * Multiplier if convert to base unit which is second (s)
      */
-    @Getter
     private double multiplier;
 
     TimeUnit(double multiplier) {
         this.multiplier = multiplier;
+    }
+
+    @Override
+    public double getMultiplier() {
+        return multiplier;
     }
 }

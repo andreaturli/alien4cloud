@@ -1,9 +1,7 @@
 package alien4cloud.model.components;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import alien4cloud.tosca.container.validation.ToscaPropertyConstraint;
 import alien4cloud.tosca.container.validation.ToscaPropertyDefaultValueConstraints;
 import alien4cloud.tosca.container.validation.ToscaPropertyDefaultValueType;
@@ -12,12 +10,6 @@ import alien4cloud.tosca.container.validation.ToscaPropertyType;
 import alien4cloud.ui.form.annotation.FormProperties;
 import alien4cloud.ui.form.annotation.FormValidValues;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@SuppressWarnings("PMD.UnusedPrivateField")
 @ToscaPropertyDefaultValueType
 @ToscaPropertyConstraint
 @ToscaPropertyDefaultValueConstraints(groups = { ToscaPropertyPostValidationGroup.class })
@@ -27,8 +19,6 @@ public class AttributeDefinition implements IValue {
     @ToscaPropertyType
     @FormValidValues({ "boolean", "string", "float", "integer", "version" })
     private String type;
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
     private String defaultValue;
     private String description;
 
@@ -43,5 +33,32 @@ public class AttributeDefinition implements IValue {
     @Override
     public boolean isDefinition() {
         return true;
+    }
+
+    public AttributeDefinition() {
+    }
+
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

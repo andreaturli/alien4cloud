@@ -4,15 +4,16 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
 import org.yaml.snakeyaml.nodes.ScalarNode;
+
+import com.google.common.collect.Maps;
 
 import alien4cloud.tosca.parser.AbstractTypeNodeParser;
 import alien4cloud.tosca.parser.DefferedParsingValueExecutor;
@@ -25,11 +26,10 @@ import alien4cloud.tosca.parser.ParsingErrorLevel;
 import alien4cloud.tosca.parser.ParsingTechnicalException;
 import alien4cloud.tosca.parser.impl.ErrorCode;
 
-import com.google.common.collect.Maps;
-
-@Slf4j
-@Getter
 public class TypeNodeParser<T> extends AbstractTypeNodeParser implements INodeParser<T> {
+
+    private static final Logger log = LoggerFactory.getLogger(TypeNodeParser.class);
+
     private final Class<T> type;
     private final Map<String, MappingTarget> yamlToObjectMapping;
     private final Map<Integer, MappingTarget> yamlOrderedToObjectMapping;
@@ -58,7 +58,7 @@ public class TypeNodeParser<T> extends AbstractTypeNodeParser implements INodePa
 
     /**
      * Do the node parsing using the given instance rather than creating a new one.
-     * 
+     *
      * @param node The node to parse.
      * @param context The parsing context.
      * @param instance The instance in which to parse the node (or null to create a new instance).
@@ -149,4 +149,15 @@ public class TypeNodeParser<T> extends AbstractTypeNodeParser implements INodePa
         }
     }
 
+    public Class<T> getType() {
+        return type;
+    }
+
+    public Map<String, MappingTarget> getYamlToObjectMapping() {
+        return yamlToObjectMapping;
+    }
+
+    public Map<Integer, MappingTarget> getYamlOrderedToObjectMapping() {
+        return yamlOrderedToObjectMapping;
+    }
 }

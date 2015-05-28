@@ -2,26 +2,25 @@ package alien4cloud.model.components;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import alien4cloud.ui.form.annotation.FormProperties;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import alien4cloud.ui.form.annotation.FormProperties;
 
 /**
  * A TOSCA function to be used as the value for a property (or operation parameter).
  */
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @FormProperties({ "function", "parameters" })
 public class FunctionPropertyValue extends AbstractPropertyValue {
     private String function;
 
     private List<String> parameters;
+
+    public FunctionPropertyValue() {}
+
+    public FunctionPropertyValue(String function, List<String> parameters) {
+        this.function = function;
+        this.parameters = parameters;
+    }
 
     /** Get the modelable entity's (node or relationship template) name related to the function, represented by the first parameter. */
     @JsonIgnore
@@ -40,4 +39,21 @@ public class FunctionPropertyValue extends AbstractPropertyValue {
     public String getCapabilityOrRequirementName() {
         return parameters.size() > 2 ? parameters.get(1) : null;
     }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
+    public List<String> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<String> parameters) {
+        this.parameters = parameters;
+    }
+
 }

@@ -14,7 +14,7 @@ import alien4cloud.tosca.properties.constraints.exception.ConstraintTechnicalExc
 import alien4cloud.tosca.properties.constraints.exception.ConstraintValueDoNotMatchPropertyTypeException;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
 import alien4cloud.utils.version.InvalidVersionException;
-import alien4cloud.utils.version.VersionUtil;
+import alien4cloud.utils.VersionUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**

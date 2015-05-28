@@ -1,19 +1,14 @@
 package alien4cloud.model.components;
 
-import lombok.Getter;
-import lombok.Setter;
 import alien4cloud.ui.form.annotation.FormProperties;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Specifies an implementation artifact for interfaces or operations of a {@link NodeType node type} or {@link RelationshipType relation type}.
- * 
+ *
  * @author luc boutier
  */
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
 @FormProperties({ "interfaceName", "operationName", "artifactType", "artifactRef" })
 public class ImplementationArtifact implements IArtifact {
     /**
@@ -28,12 +23,12 @@ public class ImplementationArtifact implements IArtifact {
      * Identifies an Artifact Template to be used as implementation artifact. This Artifact Template can be defined in the same Definitions document or in a
      * separate, imported document.
      * </p>
-     * 
+     *
      * <p>
      * The type of Artifact Template referenced by the artifactRef attribute MUST be the same type or a sub-type of the type specified in the artifactType
      * attribute.
      * </p>
-     * 
+     *
      * <p>
      * Note: if no Artifact Template is referenced, the artifact type specific content of the ImplementationArtifact element alone is assumed to represent the
      * actual artifact. For example, a simple script could be defined in place within the ImplementationArtifact element.
@@ -54,5 +49,40 @@ public class ImplementationArtifact implements IArtifact {
     @JsonIgnore
     public String getArtifactRepository() {
         return null;
+    }
+
+    @Override
+    public String getArtifactType() {
+        return artifactType;
+    }
+
+    public void setArtifactType(String artifactType) {
+        this.artifactType = artifactType;
+    }
+
+    @Override
+    public String getArtifactRef() {
+        return artifactRef;
+    }
+
+    public void setArtifactRef(String artifactRef) {
+        this.artifactRef = artifactRef;
+    }
+
+    @Override
+    public String getArchiveName() {
+        return archiveName;
+    }
+
+    public void setArchiveName(String archiveName) {
+        this.archiveName = archiveName;
+    }
+
+    public String getArchiveVersion() {
+        return archiveVersion;
+    }
+
+    public void setArchiveVersion(String archiveVersion) {
+        this.archiveVersion = archiveVersion;
     }
 }

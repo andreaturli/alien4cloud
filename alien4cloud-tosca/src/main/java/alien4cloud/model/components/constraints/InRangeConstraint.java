@@ -4,26 +4,28 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Lists;
+
 import alien4cloud.tosca.normative.IPropertyType;
 import alien4cloud.tosca.properties.constraints.ConstraintUtil;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintValueDoNotMatchPropertyTypeException;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
 import alien4cloud.ui.form.annotation.FormProperties;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.collect.Lists;
-
 @SuppressWarnings({ "PMD.UnusedPrivateField", "unchecked", "rawtypes" })
-@EqualsAndHashCode(callSuper = false, of = { "inRange" })
 @FormProperties({ "rangeMinValue", "rangeMaxValue" })
 public class InRangeConstraint extends AbstractPropertyConstraint {
 
-    @Getter
-    @Setter
     private List<String> inRange;
+
+    public List<String> getInRange() {
+        return inRange;
+    }
+
+    public void setInRange(List<String> inRange) {
+        this.inRange = inRange;
+    }
 
     private Comparable min;
     private Comparable max;
@@ -91,5 +93,27 @@ public class InRangeConstraint extends AbstractPropertyConstraint {
         } else {
             inRange.set(1, maxValue);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof InRangeConstraint)) return false;
+
+        InRangeConstraint that = (InRangeConstraint) o;
+
+        if (inRange != null ? !inRange.equals(that.inRange) : that.inRange != null) return false;
+        if (max != null ? !max.equals(that.max) : that.max != null) return false;
+        if (min != null ? !min.equals(that.min) : that.min != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = inRange != null ? inRange.hashCode() : 0;
+        result = 31 * result + (min != null ? min.hashCode() : 0);
+        result = 31 * result + (max != null ? max.hashCode() : 0);
+        return result;
     }
 }

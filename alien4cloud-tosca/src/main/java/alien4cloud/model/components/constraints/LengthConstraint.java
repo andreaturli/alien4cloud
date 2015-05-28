@@ -2,15 +2,8 @@ package alien4cloud.model.components.constraints;
 
 import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
 
-@Getter
-@Setter
-@EqualsAndHashCode(callSuper = false, of = { "length" })
-@SuppressWarnings({ "PMD.UnusedPrivateField" })
 public class LengthConstraint extends AbstractStringPropertyConstraint {
     @NotNull
     private Integer length;
@@ -20,5 +13,30 @@ public class LengthConstraint extends AbstractStringPropertyConstraint {
         if (propertyValue.length() != length) {
             throw new ConstraintViolationException("The length of the value is not equals to [" + length + "]");
         }
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LengthConstraint)) return false;
+
+        LengthConstraint that = (LengthConstraint) o;
+
+        if (length != null ? !length.equals(that.length) : that.length != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return length != null ? length.hashCode() : 0;
     }
 }

@@ -5,9 +5,6 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import alien4cloud.tosca.normative.IComparablePropertyType;
 import alien4cloud.tosca.normative.IPropertyType;
 import alien4cloud.tosca.normative.InvalidPropertyValueException;
@@ -79,15 +76,37 @@ public final class ConstraintUtil {
         }
     }
 
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @SuppressWarnings("PMD.UnusedPrivateField")
     public static class ConstraintInformation {
         private String name;
         private Object reference;
         private String value;
         private String type;
+
+        public ConstraintInformation() {
+        }
+
+        public ConstraintInformation(String name, Object reference, String value, String type) {
+            this.name = name;
+            this.reference = reference;
+            this.value = value;
+            this.type = type;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Object getReference() {
+            return reference;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public String getType() {
+            return type;
+        }
     }
 
     public static ConstraintInformation getConstraintInformation(Object constraint) throws IntrospectionException {

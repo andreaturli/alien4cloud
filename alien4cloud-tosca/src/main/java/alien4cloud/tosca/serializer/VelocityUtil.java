@@ -5,9 +5,6 @@ import java.io.Writer;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,7 +14,6 @@ import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 /**
  * A velocity Util class
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class VelocityUtil {
 
     private static final VelocityEngine VELOCITY_ENGINE;
@@ -32,6 +28,9 @@ public class VelocityUtil {
         VELOCITY_ENGINE.setProperty("classpath.resource.loader.cache", true);
         VELOCITY_ENGINE.setProperty("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.NullLogSystem");
         VELOCITY_ENGINE.init();
+    }
+
+    private VelocityUtil() {
     }
 
     public static void generate(String path, Writer outputWriter, Map<String, ?> properties) throws IOException {

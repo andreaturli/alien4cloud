@@ -2,8 +2,6 @@ package alien4cloud.tosca.parser.impl.base;
 
 import java.util.Collection;
 
-import lombok.AllArgsConstructor;
-
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.yaml.snakeyaml.nodes.MappingNode;
@@ -17,13 +15,18 @@ import alien4cloud.tosca.parser.ParserUtils;
 import alien4cloud.tosca.parser.ParsingContextExecution;
 import alien4cloud.tosca.parser.mapping.DefaultParser;
 
-@AllArgsConstructor
 public abstract class CollectionParser<T> extends DefaultParser<Collection<T>> {
     private INodeParser<T> valueParser;
     /** The tosca type of the list. */
     private String toscaType;
     /** In case the list is created from a map, optional value to inject the key into the value object. */
     private String keyPath;
+
+    public CollectionParser(INodeParser<T> valueParser, String toscaType, String keyPath) {
+        this.valueParser = valueParser;
+        this.toscaType = toscaType;
+        this.keyPath = keyPath;
+    }
 
     @Override
     public Collection<T> parse(Node node, ParsingContextExecution context) {

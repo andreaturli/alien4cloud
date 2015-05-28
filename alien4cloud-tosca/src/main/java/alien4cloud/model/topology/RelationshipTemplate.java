@@ -1,8 +1,5 @@
 package alien4cloud.model.topology;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * <p>
  * Specify a relationship between the components of the cloud application.
@@ -13,9 +10,6 @@ import lombok.Setter;
  *
  * @author luc boutier
  */
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
 public class RelationshipTemplate extends AbstractTemplate {
     /**
      * <p>
@@ -45,4 +39,36 @@ public class RelationshipTemplate extends AbstractTemplate {
     private String requirementType;
 
     private String targetedCapabilityName;
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public String getRequirementName() {
+        return requirementName;
+    }
+
+    public void setRequirementName(String requirementName) {
+        this.requirementName = requirementName;
+    }
+
+    public String getRequirementType() {
+        return requirementType;
+    }
+
+    public void setRequirementType(String requirementType) {
+        this.requirementType = requirementType;
+    }
+
+    public String getTargetedCapabilityName() {
+        return targetedCapabilityName;
+    }
+
+    public void setTargetedCapabilityName(String targetedCapabilityName) {
+        this.targetedCapabilityName = targetedCapabilityName;
+    }
 }

@@ -2,8 +2,9 @@ package alien4cloud.model.topology;
 
 import java.util.Map;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import alien4cloud.json.deserializer.PropertyValueDeserializer;
 import alien4cloud.model.components.AbstractPropertyValue;
 import alien4cloud.utils.jackson.ConditionalAttributes;
@@ -11,17 +12,11 @@ import alien4cloud.utils.jackson.ConditionalOnAttribute;
 import alien4cloud.utils.jackson.JSonMapEntryArrayDeSerializer;
 import alien4cloud.utils.jackson.JSonMapEntryArraySerializer;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 /**
  * Capability for a node template. This should match a capability definition from the node's type.
- * 
+ *
  * @author luc boutier
  */
-@Getter
-@Setter
-@SuppressWarnings("PMD.UnusedPrivateField")
 public class Capability {
     /**
      * The QName value of this attribute refers to the Capability Type definition of the Capability. This Capability Type denotes the semantics and well as
@@ -36,4 +31,20 @@ public class Capability {
     @JsonDeserialize(using = JSonMapEntryArrayDeSerializer.class, contentUsing = PropertyValueDeserializer.class)
     @JsonSerialize(using = JSonMapEntryArraySerializer.class)
     private Map<String, AbstractPropertyValue> properties;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Map<String, AbstractPropertyValue> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, AbstractPropertyValue> properties) {
+        this.properties = properties;
+    }
 }
