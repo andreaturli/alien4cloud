@@ -33,7 +33,7 @@ public class ArchiveImageLoader {
 
     /**
      * Import all images from the artifacts types in an archive.
-     * 
+     *
      * @param archiveFile The path to the archive root.
      * @param archiveRoot The archive root object.
      */
@@ -109,7 +109,7 @@ public class ArchiveImageLoader {
 
     /**
      * Get the icon tag from a tag list.
-     * 
+     *
      * @param tags The list of tags in which to search for the icon tag.
      * @return The icon tag or null if the tag cannot be found.
      */

@@ -22,7 +22,7 @@ import com.google.common.collect.Maps;
 public class ArchivePostProcessor {
     /**
      * Post process the archive: For every definition of the model it fills the id fields in the TOSCA elements from the key of the elements map.
-     * 
+     *
      * @param parsedArchive The archive to post process
      */
     public void postProcess(ParsingResult<ArchiveRoot> parsedArchive) {

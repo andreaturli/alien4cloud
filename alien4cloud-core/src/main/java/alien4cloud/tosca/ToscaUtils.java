@@ -28,7 +28,7 @@ public class ToscaUtils {
 
     /**
      * Return
-     * 
+     *
      * @param paaSNodeTemplate
      * @return
      */
@@ -57,7 +57,7 @@ public class ToscaUtils {
 
     /**
      * Returns the ordered nodeTemplate hierarchy for a given nodeTemplate
-     * 
+     *
      * @param paaSNodeTemplate
      * @return ordered nodeTemplate map
      */

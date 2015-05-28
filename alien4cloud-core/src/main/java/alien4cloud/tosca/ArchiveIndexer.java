@@ -18,7 +18,7 @@ public class ArchiveIndexer {
 
     /**
      * Index an archive in Alien indexed repository.
-     * 
+     *
      * @param archiveName The name of the archive.
      * @param archiveVersion The version of the archive.
      * @param root The archive root.

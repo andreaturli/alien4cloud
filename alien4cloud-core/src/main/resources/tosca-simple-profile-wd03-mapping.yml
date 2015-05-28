@@ -1,28 +1,28 @@
 # Mapping definitions for tosca simple profile working draft 03.
 
 # declare custom parsers for complex types that requires specific parser.
-- scalar: alien4cloud.tosca.parser.impl.base.ScalarParser
-- property_value: alien4cloud.tosca.parser.impl.advanced.PropertyValueParser
-- import_definition: alien4cloud.tosca.parser.impl.advanced.ImportParser
-- bound: alien4cloud.tosca.parser.impl.advanced.BoundParser
-- implementation_artifact: alien4cloud.tosca.parser.impl.advanced.ImplementationArtifactParser
-- derived_from_node_type: alien4cloud.tosca.parser.impl.advanced.DerivedFromNodeTypeParser
-- derived_from_relationship_type: alien4cloud.tosca.parser.impl.advanced.DerivedFromRelationshipTypeParser
-- derived_from_artifact_type: alien4cloud.tosca.parser.impl.advanced.DerivedFromArtifactTypeParser
-- derived_from_capability_type: alien4cloud.tosca.parser.impl.advanced.DerivedFromCapabilityTypeParser
-- capability_type_reference: alien4cloud.tosca.parser.impl.advanced.ReferencedCapabilityTypeParser
-- relationship_type_reference: alien4cloud.tosca.parser.impl.advanced.ReferencedRelationshipTypeParser
-- artifact_type_reference: alien4cloud.tosca.parser.impl.advanced.ReferencedArtifactTypeParser
-- tag: alien4cloud.tosca.parser.impl.advanced.TagParser
-- interface: alien4cloud.tosca.parser.impl.advanced.InterfaceParser
-- interfaces: alien4cloud.tosca.parser.impl.advanced.InterfacesParser
-- relationship_templates_type: alien4cloud.tosca.parser.impl.advanced.RelationshipTemplatesParser
-- nodetemplate_capabilities_type: alien4cloud.tosca.parser.impl.advanced.NodeTemplateCapabilitiesParser
-- outputs_type: alien4cloud.tosca.parser.impl.advanced.OuputsParser
-- group_policy_parser: alien4cloud.tosca.parser.impl.advanced.GroupPolicyParser
+- scalar: ScalarParser
+- property_value: PropertyValueParser
+- import_definition: ImportParser
+- bound: BoundParser
+- implementation_artifact: ImplementationArtifactParser
+- derived_from_node_type: DerivedFromNodeTypeParser
+- derived_from_relationship_type: DerivedFromRelationshipTypeParser
+- derived_from_artifact_type: DerivedFromArtifactTypeParser
+- derived_from_capability_type: DerivedFromCapabilityTypeParser
+- capability_type_reference: ReferencedCapabilityTypeParser
+- relationship_type_reference: ReferencedRelationshipTypeParser
+- artifact_type_reference: ReferencedArtifactTypeParser
+- tag: TagParser
+- interface: InterfaceParser
+- interfaces: InterfacesParser
+- relationship_templates_type: RelationshipTemplatesParser
+- nodetemplate_capabilities_type: NodeTemplateCapabilitiesParser
+- outputs_type: OuputsParser
+- group_policy_parser: GroupPolicyParser
 
 # declare standard mapping based parsers
-- definition: alien4cloud.tosca.model.ArchiveRoot
+- definition: ArchiveRoot
   tosca_definitions_version: archive.toscaDefinitionsVersion
   tosca_default_namespace: archive.toscaDefaultNamespace
   template_name: archive.name
@@ -73,7 +73,7 @@
     map: groups
     key: name
     type: node_group
-    
+
 - node_group: alien4cloud.model.topology.NodeGroup
   members:
     set: members
@@ -81,7 +81,7 @@
   policies:
     list: policies
     type: group_policy_parser
-    
+
 - node_template: alien4cloud.model.topology.NodeTemplate|nodeTemplateChecker
   type: type
   name: name
@@ -95,8 +95,8 @@
     inner: void
     deferred: true
     type: nodetemplate_capabilities_type
-    
-- constraint: alien4cloud.tosca.parser.impl.advanced.ConstraintParser
+
+- constraint: ConstraintParser
 
 - attribute_definition: alien4cloud.model.components.AttributeDefinition
   description: description
@@ -126,7 +126,7 @@
   type: non_validated_property_definition
 
 # capability definition supports a simple definition or more advanced.
-- capability_definition: alien4cloud.tosca.parser.impl.advanced.CapabilityDefinitionParser
+- capability_definition: CapabilityDefinitionParser
 - capability_definition_detailed: alien4cloud.model.components.CapabilityDefinition
   description: description
   type:
@@ -203,7 +203,7 @@
     get_property: tosca_function
     get_attribute: tosca_function
   default: scalar_property_value
-  
+
 - input: __discriminator
   keys:
     type: property_definition

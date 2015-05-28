@@ -121,7 +121,7 @@ public class CSARRepositoryIndexerService implements ICSARRepositoryIndexerServi
         }
         saveAndUpdateHighestVersion(element);
     }
-    
+
     /**
      * Delete this indexed element and ensure that the <code>highestVersion<code> and <code>olderVersions</code> properties
      * are up to date for the remaining ones.
