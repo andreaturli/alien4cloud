@@ -15,20 +15,11 @@
         <dependency>
             <groupId>alien4cloud</groupId>
             <artifactId>alien4cloud-common</artifactId>
-            <version>1.0.0-SM25</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>fr.lucboutier.elasticsearch</groupId>
-            <artifactId>elasticsearch-mapping</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>alien4cloud</groupId>
-            <artifactId>alien4cloud-common</artifactId>
-            <version>1.0.0-SM25</version>
         </dependency>
 
         <!-- tests -->

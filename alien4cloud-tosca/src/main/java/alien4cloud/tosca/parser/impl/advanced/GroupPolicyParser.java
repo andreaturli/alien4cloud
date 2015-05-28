@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.commons.lang.StringUtils;
 import org.elasticsearch.common.collect.Maps;
 import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.nodes.MappingNode;
@@ -49,7 +48,7 @@ public class GroupPolicyParser extends DefaultParser<AbstractPolicy> {
         for (NodeTuple child : children) {
             String key = scalarParser.parse(child.getKeyNode(), context);
             String value = scalarParser.parse(child.getValueNode(), context);
-            if (tupleIdx == 0 && StringUtils.isEmpty(value)) {
+            if (tupleIdx == 0 && (value==null || value.length()==0)) {
                 // the first entry is in fact the policyName
                 nodeMap.put(NAME, key);
             } else {
