@@ -16,11 +16,16 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>alien4cloud</groupId>
-			<artifactId>alien4cloud-security</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>alien4cloud</groupId>
+            <artifactId>alien4cloud-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>alien4cloud</groupId>
+            <artifactId>alien4cloud-tosca</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -118,26 +123,6 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/main/external-sources</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 		<pluginManagement>
 			<plugins>
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
