@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import alien4cloud.utils.version.InvalidVersionException;
+import alien4cloud.utils.version.VersionUtil;
 
 public class VersionUtilTest {
 
@@ -32,7 +33,7 @@ public class VersionUtilTest {
     public void testParseVersionFailed() throws InvalidVersionException {
         VersionUtil.parseVersion("BIG-RELEASE");
     }
-    
+
     @Test
     public void testCompareVersion() {
     	Assert.assertTrue(VersionUtil.compare("10.0.11", "10.0.10") > 0);
@@ -41,5 +42,5 @@ public class VersionUtilTest {
     	Assert.assertTrue(VersionUtil.compare("10.0.10", "10.0.11-SNAPSHOT") < 0);
     	Assert.assertTrue(VersionUtil.compare("10.0.11", "10.0.11") == 0);
     }
-    
+
 }

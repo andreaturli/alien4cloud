@@ -15,9 +15,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-
 import org.elasticsearch.common.collect.Maps;
 import org.elasticsearch.common.collect.Sets;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -33,6 +30,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.common.collect.Lists;
+import com.mangofactory.swagger.annotations.ApiIgnore;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 import alien4cloud.application.DeploymentSetupService;
 import alien4cloud.application.InvalidDeploymentSetupException;
@@ -76,12 +77,10 @@ import alien4cloud.tosca.parser.ParsingResult;
 import alien4cloud.tosca.parser.impl.ErrorCode;
 import alien4cloud.utils.FileUploadUtil;
 import alien4cloud.utils.FileUtil;
-import alien4cloud.utils.VersionUtil;
 import alien4cloud.utils.YamlParserUtil;
-
-import com.google.common.collect.Lists;
-import com.mangofactory.swagger.annotations.ApiIgnore;
-import com.wordnik.swagger.annotations.ApiOperation;
+import alien4cloud.utils.version.VersionUtil;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/rest/csars")

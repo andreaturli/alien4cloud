@@ -16,7 +16,6 @@ import alien4cloud.exception.NotFoundException;
 import alien4cloud.model.components.CSARDependency;
 import alien4cloud.model.components.Csar;
 import alien4cloud.model.topology.Topology;
-import alien4cloud.utils.VersionUtil;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -31,7 +30,7 @@ public class CsarService implements ICsarDependencyLoader {
 
     /**
      * Get a cloud service if exists in Dao.
-     * 
+     *
      * @param name The name of the archive.
      * @param version The version of the archive.
      * @return The {@link Csar Cloud Service Archive} if found in the repository or null.
@@ -79,10 +78,10 @@ public class CsarService implements ICsarDependencyLoader {
         GetMultipleDataResult<Topology> result = csarDAO.search(Topology.class, null, null, filter, null, 0, Integer.MAX_VALUE);
         return result.getData();
     }
-    
+
     /**
      * Save a Cloud Service Archive in ElasticSearch.
-     * 
+     *
      * @param csar The csar to save.
      */
     public void save(Csar csar) {

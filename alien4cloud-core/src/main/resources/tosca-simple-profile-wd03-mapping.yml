@@ -22,7 +22,7 @@
 - group_policy_parser: alien4cloud.tosca.parser.impl.advanced.GroupPolicyParser
 
 # declare standard mapping based parsers
-- definition: alien4cloud.tosca.model.ArchiveRoot
+- definition: ArchiveRoot
   tosca_definitions_version: archive.toscaDefinitionsVersion
   tosca_default_namespace: archive.toscaDefaultNamespace
   template_name: archive.name
@@ -56,7 +56,7 @@
     deferredOrder: 1000 # we want this to be the last executed
     type: topology_template_type
 
-- topology_template_type: alien4cloud.model.topology.Topology|topologyChecker
+- topology_template_type: Topology|topologyChecker
   description: .topologyTemplateDescription # mapped to a root's property
   inputs:
     map: inputs
@@ -73,16 +73,16 @@
     map: groups
     key: name
     type: node_group
-    
-- node_group: alien4cloud.model.topology.NodeGroup
+
+- node_group: NodeGroup
   members:
     set: members
     type: scalar
   policies:
     list: policies
     type: group_policy_parser
-    
-- node_template: alien4cloud.model.topology.NodeTemplate|nodeTemplateChecker
+
+- node_template: NodeTemplate|nodeTemplateChecker
   type: type
   name: name
   properties:
@@ -95,7 +95,7 @@
     inner: void
     deferred: true
     type: nodetemplate_capabilities_type
-    
+
 - constraint: alien4cloud.tosca.parser.impl.advanced.ConstraintParser
 
 - attribute_definition: alien4cloud.model.components.AttributeDefinition
@@ -203,7 +203,7 @@
     get_property: tosca_function
     get_attribute: tosca_function
   default: scalar_property_value
-  
+
 - input: __discriminator
   keys:
     type: property_definition

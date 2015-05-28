@@ -52,7 +52,7 @@ import alien4cloud.topology.task.TaskCode;
 import alien4cloud.tosca.container.ToscaTypeLoader;
 import alien4cloud.tosca.serializer.VelocityUtil;
 import alien4cloud.utils.MapUtil;
-import alien4cloud.utils.VersionUtil;
+import alien4cloud.utils.version.VersionUtil;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;

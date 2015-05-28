@@ -14,12 +14,12 @@ import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationExc
 public class ConstraintPropertyServiceTest {
 
     private ConstraintPropertyService constraintPropertyService;
-    
+
     @Before
     public void prepare() {
         constraintPropertyService = new ConstraintPropertyService();
     }
-    
+
     // valid value tests
 
     @Test

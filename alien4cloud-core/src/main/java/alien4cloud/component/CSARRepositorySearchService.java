@@ -21,7 +21,7 @@ import alien4cloud.model.components.CSARDependency;
 import alien4cloud.model.components.Csar;
 import alien4cloud.model.components.IndexedToscaElement;
 import alien4cloud.utils.CollectionUtils;
-import alien4cloud.utils.VersionUtil;
+import alien4cloud.utils.version.VersionUtil;
 
 import com.google.common.collect.Sets;
 

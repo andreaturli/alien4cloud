@@ -20,6 +20,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.mapping.ElasticSearchClient;
 import org.springframework.stereotype.Component;
 
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 import alien4cloud.dao.ElasticSearchDAO;
 import alien4cloud.dao.IGenericSearchDAO;
 import alien4cloud.dao.model.GetMultipleDataResult;
@@ -32,10 +35,7 @@ import alien4cloud.model.components.IndexedModelUtils;
 import alien4cloud.model.components.IndexedToscaElement;
 import alien4cloud.tosca.ArchiveImageLoader;
 import alien4cloud.utils.MapUtil;
-import alien4cloud.utils.VersionUtil;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import alien4cloud.utils.version.VersionUtil;
 
 @Component
 public class CSARRepositoryIndexerService implements ICSARRepositoryIndexerService {
@@ -121,7 +121,7 @@ public class CSARRepositoryIndexerService implements ICSARRepositoryIndexerServi
         }
         saveAndUpdateHighestVersion(element);
     }
-    
+
     /**
      * Delete this indexed element and ensure that the <code>highestVersion<code> and <code>olderVersions</code> properties
      * are up to date for the remaining ones.

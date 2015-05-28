@@ -15,7 +15,7 @@ import alien4cloud.model.application.ApplicationVersion;
 import alien4cloud.model.deployment.Deployment;
 import alien4cloud.model.topology.Topology;
 import alien4cloud.utils.MapUtil;
-import alien4cloud.utils.VersionUtil;
+import alien4cloud.utils.version.VersionUtil;
 
 @Service
 public class ApplicationVersionService {
@@ -138,7 +138,7 @@ public class ApplicationVersionService {
 
     /**
      * Check if an application version is deployed.
-     * 
+     *
      * @param applicationVersionId
      * @return isDeployed A boolean.
      */
@@ -156,7 +156,7 @@ public class ApplicationVersionService {
 
     /**
      * Check if a name version is already use by an other application version is a specific application.
-     * 
+     *
      * @param applicationId
      * @param applicationVersionName
      * @return isUsed A boolean.
@@ -175,7 +175,7 @@ public class ApplicationVersionService {
 
     /**
      * Get an application version by id or fail if not found.
-     * 
+     *
      * @param id
      * @return The application version of id or throw an exception
      */
@@ -189,7 +189,7 @@ public class ApplicationVersionService {
 
     /**
      * Get an application version by id
-     * 
+     *
      * @param id
      * @return the application version or null if not found
      */
@@ -201,7 +201,7 @@ public class ApplicationVersionService {
     /**
      * Get a version for an application
      * (returns the default if not found)
-     * 
+     *
      * @param applicationId
      * @param applicationVersionId
      * @return

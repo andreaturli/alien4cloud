@@ -6,10 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import alien4cloud.utils.version.Version;
-
 public class VersionTest {
-    
+
     private Version newArtifactVersion(String version)
     {
         return new Version(version);

@@ -2,8 +2,6 @@ package alien4cloud.utils.services;
 
 import java.beans.IntrospectionException;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.stereotype.Service;
 
 import alien4cloud.model.components.PropertyConstraint;
@@ -15,12 +13,13 @@ import alien4cloud.tosca.properties.constraints.ConstraintUtil.ConstraintInforma
 import alien4cloud.tosca.properties.constraints.exception.ConstraintTechnicalException;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintValueDoNotMatchPropertyTypeException;
 import alien4cloud.tosca.properties.constraints.exception.ConstraintViolationException;
-import alien4cloud.utils.VersionUtil;
 import alien4cloud.utils.version.InvalidVersionException;
+import alien4cloud.utils.version.VersionUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Common property constraint utils
- * 
+ *
  * @author mourouvi
  *
  */
@@ -31,7 +30,7 @@ public class ConstraintPropertyService {
 
     /**
      * Check constraints defined on a property for a specified value
-     * 
+     *
      * @param propertyName Property name (mainly used to create a comprehensive error message)
      * @param propertyValue Tested property value
      * @param propertyDefinition Full property definition with type, constraints, default value,...
@@ -75,7 +74,7 @@ public class ConstraintPropertyService {
 
     /**
      * Test type/value regardless constraints
-     * 
+     *
      * @param propertyDefinition
      * @param propertyValue
      * @throws Exception

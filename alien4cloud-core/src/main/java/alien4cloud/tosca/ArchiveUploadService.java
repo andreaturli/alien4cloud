@@ -22,7 +22,7 @@ import alien4cloud.tosca.parser.ParsingErrorLevel;
 import alien4cloud.tosca.parser.ParsingException;
 import alien4cloud.tosca.parser.ParsingResult;
 import alien4cloud.tosca.parser.impl.ErrorCode;
-import alien4cloud.utils.VersionUtil;
+import alien4cloud.utils.version.VersionUtil;
 
 @Component
 public class ArchiveUploadService {
@@ -44,7 +44,7 @@ public class ArchiveUploadService {
 
     /**
      * Upload a TOSCA archive and index it's components.
-     * 
+     *
      * @param path The archive path.
      * @return The Csar object from the parsing.
      * @throws ParsingException
@@ -98,7 +98,7 @@ public class ArchiveUploadService {
         imageLoader.importImages(path, parsingResult);
         // index the archive content in elastic-search
         archiveIndexer.indexArchive(archiveName, archiveVersion, parsingResult.getResult(), archive != null);
-        
+
         // if a topology has been added we want to notify the user
         if (parsingResult.getResult().getTopology() != null) {
             Topology topology = parsingResult.getResult().getTopology();
@@ -125,7 +125,7 @@ public class ArchiveUploadService {
 
     /**
      * Create a simple result without all the parsed data but just the {@link Csar} object as well as the eventual errors.
-     * 
+     *
      * @return The simple result out of the complex parsing result.
      */
     private ParsingResult<Csar> toSimpleResult(ParsingResult<ArchiveRoot> parsingResult) {
@@ -146,7 +146,7 @@ public class ArchiveUploadService {
 
     /**
      * Checks if a given parsing result has any error.
-     * 
+     *
      * @param parsingResult The parsing result to check.
      * @param level The level of error to check. Null means any levels.
      * @return true if the parsing result as at least one error of the requested level.

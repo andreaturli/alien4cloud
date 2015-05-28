@@ -498,7 +498,7 @@ public class TopologyController {
 
     /**
      * Manage node group members when a node name is removed or its name has changed.
-     * 
+     *
      * @param newName : the new name of the node or <code>null</code> if the node has been removed.
      */
     private void updateGroupMembers(Topology topology, NodeTemplate template, String nodeName, String newName) {
@@ -527,7 +527,7 @@ public class TopologyController {
 
     /**
      * Build and return a RestResponse if we detected a property constraint violation
-     * 
+     *
      * @param propertyName property's name
      * @param propertyValue property's value
      * @param propertyDefinition property's definition

@@ -70,7 +70,7 @@ public class MetaPropertiesService {
 
     /**
      * Return the the meta property given its name
-     * 
+     *
      * @param metaPropertyName
      * @return meta property
      */

@@ -126,7 +126,7 @@ public class TopologyTemplateController {
      * Delete an existing {@link TopologyTemplate}
      *
      * @param topologyTemplateId
-     * 
+     *
      * @return
      */
     @ApiOperation(value = "Delete a topology template given an id. Alse delete the related topology", notes = "Role required [ Role.ARCHITECT ]")

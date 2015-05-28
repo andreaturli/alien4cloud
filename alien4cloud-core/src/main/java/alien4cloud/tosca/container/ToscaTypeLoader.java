@@ -4,16 +4,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 import alien4cloud.csar.services.ICsarDependencyLoader;
 import alien4cloud.exception.NotFoundException;
 import alien4cloud.model.components.CSARDependency;
-import alien4cloud.utils.VersionUtil;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import alien4cloud.utils.version.VersionUtil;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
@@ -37,7 +37,7 @@ public class ToscaTypeLoader {
 
     /**
      * Try to unload the given type
-     * 
+     *
      * @param type name of the type
      */
     public void unloadType(String type) {
@@ -113,7 +113,7 @@ public class ToscaTypeLoader {
      * Add directDependency for the given type from the given archive.
      * If the directDependency is of an deprecated version ( < than found in the existing dependencies), ignore it.
      * If the directDependency is of a more recent version, force the dependency of the topology to the more recent one
-     * 
+     *
      * @param directDependency the direct directDependency to load the type
      * @param type name of the type
      */

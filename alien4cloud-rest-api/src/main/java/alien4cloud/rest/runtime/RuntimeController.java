@@ -146,7 +146,7 @@ public class RuntimeController {
 
     /**
      * Get runtime (deployed) topology of an application on a specific environment
-     * 
+     *
      * @param applicationId application id for which to get the topology
      * @param applicationEnvironmentId application environment for which to get the topology through the version
      * @return {@link RestResponse}<{@link TopologyDTO}> containing the requested runtime {@link Topology} and the

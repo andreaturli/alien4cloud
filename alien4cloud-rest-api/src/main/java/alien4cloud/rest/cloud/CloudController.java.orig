@@ -53,7 +53,7 @@ import alien4cloud.security.model.CloudRole;
 import alien4cloud.security.model.Role;
 <<<<<<< HEAD
 =======
-import alien4cloud.tosca.properties.constraints.ConstraintUtil.ConstraintInformation;
+import ConstraintUtil.ConstraintInformation;
 import alien4cloud.utils.MetaPropertiesServiceWrapper;
 >>>>>>> cbf083c01e52aba407ccf34464e39458142b0aeb
 

@@ -9,12 +9,11 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.stereotype.Service;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 import alien4cloud.model.cloud.ActivableComputeTemplate;
 import alien4cloud.model.cloud.AvailabilityZone;
@@ -42,12 +41,12 @@ import alien4cloud.tosca.normative.Size;
 import alien4cloud.tosca.normative.SizeUnit;
 import alien4cloud.tosca.normative.ToscaType;
 import alien4cloud.utils.MappingUtil;
-import alien4cloud.utils.VersionUtil;
 import alien4cloud.utils.version.Version;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import alien4cloud.utils.version.VersionUtil;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

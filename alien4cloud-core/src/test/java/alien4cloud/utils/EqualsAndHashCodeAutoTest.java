@@ -9,7 +9,6 @@ import org.springframework.beans.BeanWrapperImpl;
 
 import alien4cloud.model.cloud.CloudImageFlavor;
 import alien4cloud.model.cloud.CloudImageRequirement;
-import alien4cloud.model.cloud.MatchedNetworkTemplate;
 import alien4cloud.model.cloud.NetworkTemplate;
 import alien4cloud.model.common.Tag;
 import alien4cloud.model.components.CSARDependency;

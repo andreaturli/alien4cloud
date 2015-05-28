@@ -21,12 +21,11 @@ package alien4cloud.utils.version;
 
 import java.util.Locale;
 
-import alien4cloud.utils.version.ComparableVersion;
 import junit.framework.TestCase;
 
 /**
  * Test ComparableVersion.
- * 
+ *
  * @author <a href="mailto:hboutemy@apache.org">Hervé Boutemy</a>
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
